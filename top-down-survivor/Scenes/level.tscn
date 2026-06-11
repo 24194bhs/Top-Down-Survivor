@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xn1kdiwwcwxx" path="res://kenney_map-pack/Tilesheet/mapPack_tilesheet.png" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://bdset4m80iadc" path="res://Scenes/player.tscn" id="2_k5f4k"]
+[ext_resource type="Script" uid="uid://fscqyufqbqys" path="res://Scripts/score_label.gd" id="4_81xng"]
 [ext_resource type="PackedScene" uid="uid://co58rirwns42r" path="res://Scenes/enemy_spawner.tscn" id="4_wqkje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5f4k"]
@@ -413,5 +414,40 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." unique_id=159995188 instance=ExtResource("2_k5f4k")]
 
 [node name="Enemy spawner" parent="." unique_id=1440566818 node_paths=PackedStringArray("target") instance=ExtResource("4_wqkje")]
-position = Vector2(123, -102)
+position = Vector2(487, -438)
 target = NodePath("../Player")
+
+[node name="Enemy spawner2" parent="." unique_id=1844218401 node_paths=PackedStringArray("target") instance=ExtResource("4_wqkje")]
+position = Vector2(-464, 464)
+target = NodePath("../Player")
+
+[node name="Enemy spawner3" parent="." unique_id=171436122 node_paths=PackedStringArray("target") instance=ExtResource("4_wqkje")]
+position = Vector2(499, 455)
+target = NodePath("../Player")
+
+[node name="Enemy spawner4" parent="." unique_id=1733258454 node_paths=PackedStringArray("target") instance=ExtResource("4_wqkje")]
+position = Vector2(-495, -438)
+target = NodePath("../Player")
+
+[node name="UI Layer" type="CanvasLayer" parent="." unique_id=476104911]
+
+[node name="UI" type="Control" parent="UI Layer" unique_id=311129054]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score Label" type="Label" parent="UI Layer/UI" unique_id=1241626134]
+layout_mode = 0
+offset_left = 990.0
+offset_top = 16.0
+offset_right = 1111.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+script = ExtResource("4_81xng")
+
+[connection signal="scored" from="Player" to="UI Layer/UI/Score Label" method="_on_player_scored"]

@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://bn47is6cvsnte"]
 
+[ext_resource type="Script" uid="uid://mr1oa4k2wfoa" path="res://Scripts/reward.gd" id="1_5bq4m"]
 [ext_resource type="Texture2D" uid="uid://dpm7tsy1obogi" path="res://kenney_map-pack/PNG/mapTile_114.png" id="1_8gnab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5bq4m"]
-size = Vector2(17, 21)
+size = Vector2(32, 41)
 
 [node name="Reward" type="Area2D" unique_id=497434437]
+script = ExtResource("1_5bq4m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=607595465]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_8gnab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2025492645]
-position = Vector2(0.5, 0.5)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_5bq4m")

@@ -7,6 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(64, 64)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
+radius = 45.0
+height = 90.0
+
 [node name="Player" type="CharacterBody2D" unique_id=159995188]
 script = ExtResource("1_cvnsp")
 
@@ -20,3 +24,11 @@ shape = SubResource("RectangleShape2D_cvnsp")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1703150599]
 
 [node name="Gun" parent="." unique_id=1426528196 instance=ExtResource("3_6t5aa")]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=494257673]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=941901147]
+shape = SubResource("CapsuleShape2D_6t5aa")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

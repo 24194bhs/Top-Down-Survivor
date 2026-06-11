@@ -2,7 +2,7 @@ extends Node2D
 
 var bullet_prefab = preload("res://Scenes/bullet.tscn")
 
-var num_bullets = 8
+var num_bullets = 1
 
 func _on_timer_timeout() -> void:
 	#Shoot a bullet
